@@ -1,0 +1,25 @@
+{
+  "$view": {
+    "attributes": {
+      "_id": "weather",
+      "statusBar.style": "light",
+      "bg.color": "#000000"
+    },
+    "actions": [],
+    "controls": [
+      {
+        "_id": "layoutMain",
+        "_type": "Layout",
+        "attributes": {
+          "size.w": "100%",
+          "size.h": "100%",
+          "visible": false,
+          "bg.color": "000000",
+          "layoutType": "float"
+        },
+        "controls": []
+      }
+    ],
+    "datasources": []
+  }
+}
