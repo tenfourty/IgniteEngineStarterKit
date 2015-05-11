@@ -23,7 +23,7 @@
                      ],
         "datasources": [
                         {
-                        "_id": "dataLocation",
+                        "_id": "dataForecastLocation",
                         "_type": "HTTP",
                         "actions": [
                                     {
@@ -39,19 +39,20 @@
                                     {
                                     "_type": "Alert",
                                     "attributes": {
-                                    "title": "dataLocation",
+                                    "title": "dataForecastLocation",
                                     "message": "success"
                                     },
                                     "on": "success"
                                     }
-                                    ]
+                                    ],
                         "attributes": {
                         "autoLoad.enabled": true,
                         "method": "GET",
                         "responseType": "json",
-                        "url": "http://api.wunderground.com/api/161cf6c817d55c86/geolookup/q/[[$device.location]].json"
+                        "url": "http://api.wunderground.com/api/161cf6c817d55c86/geolookup/q/[[$device.location.lat]],[[$device.location.long]].json"
                         }
                         }
                         ]
     }
 }
+
