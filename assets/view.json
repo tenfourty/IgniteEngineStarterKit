@@ -18,6 +18,31 @@
                      "layoutType": "float"
                      },
                      "controls": [
+                                  {
+                                  "_id": "imageBackground",
+                                  "_type": "Image",
+                                  "attributes": {
+                                  "size.w": "100%",
+                                  "size.h": "100%",
+                                  "layoutType": "absolute",
+                                  "margin.left": 0,
+                                  "image": "/images/[[dataForecastCurrently.response.body.current_observation.icon]].jpg"
+                                  }
+                                  },
+                                  {
+                                  "_id": "textCityName",
+                                  "_type": "Text",
+                                  "attributes": {
+                                  "align.h": "right",
+                                  "align.v": "bottom",
+                                  "margin.bottom": 40,
+                                  "margin.right": 23,
+                                  "layoutType": "absolute",
+                                  "font": "HelveticaNeue-Light:24",
+                                  "text": "[[dataForecastCurrently.response.body.current_observation.display_location.city]]",
+                                  "color": "#ffffff"
+                                  }
+                                  }
                      ]
                      }
                      ],
@@ -35,14 +60,6 @@
                                     "visible": true
                                     },
                                     "on": "success"
-                                    },
-                                    {
-                                    "_type": "Alert",
-                                    "attributes": {
-                                    "title": "dataForecastLocation",
-                                    "message": "success"
-                                    },
-                                    "on": "success"
                                     }
                                     ],
                         "attributes": {
@@ -50,6 +67,37 @@
                         "method": "GET",
                         "responseType": "json",
                         "url": "http://api.wunderground.com/api/161cf6c817d55c86/geolookup/q/[[$device.location.lat]],[[$device.location.long]].json"
+
+                        }
+                        },
+                        {
+                        "_id": "dataForecastCurrently",
+                        "_type": "HTTP",
+                        "actions": [
+                                    {
+                                    "_type": "Modify",
+                                    "attributes": {
+                                    "_target": "layoutMain"
+                                    },
+                                    "set": {
+                                    "visible": true
+                                    },
+                                    "on": "success"
+                                    },
+                                    {
+                                    "_type": "Alert",
+                                    "attributes": {
+                                    "title": "dataForecastCurrently",
+                                    "message": "success"
+                                    },
+                                    "on": "success"
+                                    }
+                                    ],
+                        "attributes": {
+                        "autoLoad.enabled": false,
+                        "method": "GET",
+                        "responseType": "json",
+                        "url": "http://api.wunderground.com/api/161cf6c817d55c86/conditions/q/[[dataForecastLocation.response.body.location.city:url.encode]],[[dataForecastLocation.response.body.location.state]].json"
                         }
                         }
                         ]
